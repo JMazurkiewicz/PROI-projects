@@ -1,0 +1,9 @@
+# Executeables
+*.o
+*.obj
+*.exe
+*.out
+
+# Build directory
+[Bb]uild/
+[Bb]uild?/

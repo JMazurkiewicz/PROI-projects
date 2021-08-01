@@ -1,0 +1,94 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quadratic_equation:
+    name: Build "Quadratic equation" project
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Debug, Release]
+
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/quadratic-equation
+        shell: bash
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+
+    - name: Build project
+      run: cmake --build build --config ${{matrix.build_type}}
+
+  complex_list:
+    name: Build and test "Complex list" project
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Debug, Release]
+
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/complex-list
+        shell: bash
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+
+    - name: Build project
+      run: cmake --build build --config ${{matrix.build_type}}
+
+    - name: Run tests
+      run: |
+        cd build
+        ctest -C ${{matrix.build_type}}
+
+  doubly_linked_list:
+    name: Build and test "Doubly linked list" project
+    runs-on: ${{matrix.os}}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Debug, Release]
+
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/doubly-linked-list
+        shell: bash
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=bin \
+          -DCMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG=bin \
+          -DCMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE=bin
+
+    - name: Build project
+      run: cmake --build build --config ${{matrix.build_type}}
+
+    - name: Run tests
+      run: |
+        cd build
+        ctest -C ${{matrix.build_type}}
+    
+    - name: Run example (Statistics)
+      run: ./build/example/bin/Statistics
