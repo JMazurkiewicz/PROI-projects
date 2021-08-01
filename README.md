@@ -1,5 +1,7 @@
 # Projects for "Object-oriented programming" course
 
+[![CI](https://github.com/JMazurkiewicz/PROI-projects/actions/workflows/CI.yaml/badge.svg)](https://github.com/JMazurkiewicz/PROI-projects/actions/workflows/CI.yaml)
+
 ## Building projects
 
 Each projects can be built with CMake:
