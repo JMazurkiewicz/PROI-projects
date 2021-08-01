@@ -29,7 +29,7 @@ void printCountedDigits(DoublyLinkedList<int>& list) {
         ++counter[e];
     }
 
-    std::cout << "ilosci wystapien roznych cyfr:\n";
+    std::cout << "Amounts of different digits:\n";
     for(auto&& e : counter) {
         std::cout << e.first << " -> " << e.second << '\n';
     }
@@ -71,16 +71,16 @@ int main() {
     DoublyLinkedList<int> list(100);
 
     generateList(list);
-    std::cout << "lista: " << list << '\n';
+    std::cout << "List: " << list << '\n';
 
-    std::cout << "srednia: " << calculateArithmeticMean(list) << '\n';
+    std::cout << "Arithmetic mean: " << calculateArithmeticMean(list) << '\n';
 
     printCountedDigits(list);
 
     quicksort(list.begin(), list.end());
-    std::cout << "posortowana lista: " << list << '\n';
+    std::cout << "Sorted list: " << list << '\n';
 
-    std::cout << "czy wystapila wartosc wieksza niz 10: ";
+    std::cout << "Value greater than 10 occurred: ";
     std::cout << std::boolalpha << hasAnyValueGreaterThan10(list)  << '\n';
 
 
