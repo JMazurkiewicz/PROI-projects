@@ -59,7 +59,7 @@ namespace impl {
 
         void moveAppendFrom(ListImpl&& other) {
             other.getHead()->hookFront(this->getTail());
-            other.getTail()->hookFront(this->getHeader());
+            other.getTail()->hookBack(this->getHeader());
             header.size += other.getSize();
 
             other.getHeader()->reset();

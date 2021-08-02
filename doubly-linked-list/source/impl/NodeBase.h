@@ -33,13 +33,13 @@ namespace impl {
         }
 
         void hookFront(NodeBase* other) {
-            other->prev = this;
-            next = other;
+            other->next = this;
+            prev = other;
         }
 
         void hookBack(NodeBase* other) {
-            other->next = this;
-            prev = other;
+            other->prev = this;
+            next = other;
         }
 
         NodeBase* getNextNode() const {

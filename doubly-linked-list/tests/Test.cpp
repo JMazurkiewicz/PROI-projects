@@ -28,19 +28,24 @@ namespace test {
 
 int main() {
     std::ios_base::sync_with_stdio(false);
-
-    START_TEST(constructorTest);
-    START_TEST(assignmentOperatorTest);
-    START_TEST(insertionTest);
-    START_TEST(pushingFunctionsTest);
-    START_TEST(erasureTest);
-    START_TEST(poppingFunctionsTest);
-    START_TEST(comparasionsTest);
-    START_TEST(swapTest);
-    START_TEST(iteratorExceptionsTest);
-    START_TEST(appendingTest);
-    START_TEST(printingTest);
-    START_TEST(grouppingTest);
+    
+    try {
+        START_TEST(constructorTest);
+        START_TEST(assignmentOperatorTest);
+        START_TEST(insertionTest);
+        START_TEST(pushingFunctionsTest);
+        START_TEST(erasureTest);
+        START_TEST(poppingFunctionsTest);
+        START_TEST(comparasionsTest);
+        START_TEST(swapTest);
+        START_TEST(iteratorExceptionsTest);
+        START_TEST(appendingTest);
+        START_TEST(printingTest);
+        START_TEST(grouppingTest);
+    } catch(const std::exception& e) {
+        std::cerr << "Fatal error: " << e.what() << '\n';
+        return 1;
+    }
 
     return test::status;
 }
