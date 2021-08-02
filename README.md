@@ -44,7 +44,7 @@ Score: 5/5
 
 ## Complex list
 
-Requirements:
+Project requirements:
 
 * Create class that represents complex number with operators:
   * addition operators: `operator+` and `operator+=`
@@ -62,7 +62,7 @@ Score: 15/15
 
 ## Doubly linked list
 
-Requirements:
+Project requirements:
 
 * Redesign previously implemented doubly linked list to work with any type (make it a `template`)
 * List should be implemented as COW (copy-on-write)
